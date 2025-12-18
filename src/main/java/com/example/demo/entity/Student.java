@@ -1,26 +1,35 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
+import jakarta.Validation.constraints.NotBlank;
+import jakarta.Validation.constraints.Email;
+import jakarta.Validation.constraints.Size;
+import jakarta.persistence.olumn;
 @Entity
-@Table(name="StudentTable")
+//@Table(name = "students")
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank(message="Name field connot be empty")
+    @Size(min=3,max=20,message="The user must be min of 3 and max of 20 characters")
     private String name;
+    @Email(message="Invalid email id")
+    @column(unique=true)
     private String email;
 
-    // Keep only the no-arg constructor (required by JPA and Jackson)
+    
+
     public Student() {
     }
 
-    // Getters and setters
+    public Student(Long  id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
@@ -30,7 +39,7 @@ public class Student {
     }
 
     public String getName() {
-        return name;
+            return name;
     }
 
     public void setName(String name) {
