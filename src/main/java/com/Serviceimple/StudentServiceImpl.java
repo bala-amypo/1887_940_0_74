@@ -8,20 +8,12 @@ import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
 
 @Service
-public class StudentServiceImple implements StudentService  {
- 
-
-    // private final StudentRepository studentRepository;
-    // public StudentServiceImple(StudentRepository studentRepository) {
-    //     this.studentRepository = studentRepository;
-    // }
- 
+public class StudentServiceImple implements StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);// Saving student details using repository save method/ Ins
-    
-
+    public Student saveStudent(Student student){
+        return studentRepository.save(student);
     }
+    
 }
